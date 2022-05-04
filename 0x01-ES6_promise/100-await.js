@@ -12,6 +12,6 @@ export default async function asyncUploadUser() {
     completeUser.user = uploadedUser;
     return completeUser;
   } catch (error) {
-    return completeUser;
+    return {};
   }
 }
