@@ -1,4 +1,4 @@
-export let weakMap = new WeakMap();
+export const weakMap = new WeakMap();
 
 export function queryAPI(endpoint) {
   let epreqs = weakMap.get(endpoint) || 0;
