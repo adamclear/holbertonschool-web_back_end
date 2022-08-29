@@ -1,4 +1,4 @@
-#!usr/bin/env python3
+#!/usr/bin/env python3
 ''' This function concatenates two strings and returns the new string. This
 function is to be type-annotated. '''
 
