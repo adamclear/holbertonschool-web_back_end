@@ -5,7 +5,7 @@ wait_random in ascending order because of concurrency. '''
 
 import asyncio
 from typing import List
-task_wait_random = __import__('3-task').task_wait_random
+task_wait_random = __import__('3-tasks').task_wait_random
 
 
 async def wait_n(n: int, max_delay: int = 10) -> List[float]:
