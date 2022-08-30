@@ -8,7 +8,7 @@ from typing import List
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
-async def wait_n(n: int, max_delay: int = 10) -> List[float]:
+async def task_wait_n(n: int, max_delay: int = 10) -> List[float]:
     ''' Uses task_wait_random in a loop to generate a taskList
         of n number of times to do wait_random.
         Then uses asyncio.as_completed in a loop to generate a resultList
