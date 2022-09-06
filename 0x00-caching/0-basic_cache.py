@@ -17,5 +17,3 @@ class BasicCache(BaseCaching):
         ''' Returns a value from the cache by the key. '''
         if key:
             return self.cache_data.get(key)
-        else:
-            return None
