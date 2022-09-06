@@ -18,6 +18,8 @@ class LFUCache(BaseCaching):
         if there are more items than allowed. If items are tied for LFU, it
         goes by the LRU of those items. '''
         if key and item:
+            if key in self.cache_data:
+                self.cache_data.pop(key)
             if len(self.NoU_dict) > 0:
                 del_key = self.find_LFU()
             self.cache_data[key] = item
@@ -44,13 +46,10 @@ class LFUCache(BaseCaching):
 
     def find_LFU(self):
         ''' Returns the key to the LFU in cache. '''
-        print(self.NoU_dict)
         LFU_value = min(self.NoU_dict.values())
         LFU_dict = {}
         for key, value in self.NoU_dict.items():
             if value == LFU_value:
                 LFU_dict[key] = value
-        print(LFU_dict)
         LFU_list = list(LFU_dict)
-        print(LFU_list)
         return LFU_list[0]
