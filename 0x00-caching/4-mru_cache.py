@@ -12,6 +12,8 @@ class MRUCache(BaseCaching):
         ''' Adds an item to the cache and removes the last (MRU position)
         item in the cache if there are more items than allowed. '''
         if key and item:
+            if key in self.cache_data:
+                self.cache_data.pop(key)
             self.cache_data[key] = item
             if len(self.cache_data) > self.MAX_ITEMS:
                 key_list = list(self.cache_data)
