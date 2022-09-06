@@ -21,7 +21,10 @@ class LFUCache(BaseCaching):
             if len(self.NoU_dict) > 0:
                 del_key = self.find_LFU()
             self.cache_data[key] = item
-            self.NoU_dict[key] = 1
+            if key in self.NoU_dict:
+                self.NoU_dict[key] += 1
+            else:
+                self.NoU_dict[key] = 1
             if len(self.cache_data) > self.MAX_ITEMS:
                 self.cache_data.pop(del_key)
                 self.NoU_dict.pop(del_key)
