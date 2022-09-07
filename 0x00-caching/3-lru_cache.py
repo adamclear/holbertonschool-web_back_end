@@ -6,7 +6,8 @@ from base_caching import BaseCaching
 
 
 class LRUCache(BaseCaching):
-    ''' Implements the put and get functions in accordance with LRU caching. '''
+    ''' Implements the put and get functions in accordance with
+    LRU caching. '''
 
     def put(self, key, item):
         ''' Adds an item to the cache and removes the first (LRU position)
@@ -26,7 +27,7 @@ class LRUCache(BaseCaching):
         the end (MRU position) of the dictionary. '''
         if key:
             item = self.cache_data.get(key)
-            if item != None:
+            if item is not None:
                 self.cache_data.pop(key)
                 self.cache_data[key] = item
                 return self.cache_data.get(key)

@@ -6,7 +6,8 @@ from base_caching import BaseCaching
 
 
 class LFUCache(BaseCaching):
-    ''' Implements the put and get functions in accordance with LFU caching. '''
+    ''' Implements the put and get functions in accordance with
+    LFU caching. '''
 
     def __init__(self):
         ''' Initialization method.  '''
@@ -14,7 +15,7 @@ class LFUCache(BaseCaching):
         self.NoU_dict = {}
 
     def put(self, key, item):
-        ''' Adds an item to the cache and removes the LFU item in the cache 
+        ''' Adds an item to the cache and removes the LFU item in the cache
         if there are more items than allowed. If items are tied for LFU, it
         goes by the LRU of those items. '''
         if key and item:
@@ -38,7 +39,7 @@ class LFUCache(BaseCaching):
         value in the NoU dictionary for that key. '''
         if key:
             item = self.cache_data.get(key)
-            if item != None:
+            if item is not None:
                 self.cache_data.pop(key)
                 self.cache_data[key] = item
                 self.NoU_dict[key] += 1

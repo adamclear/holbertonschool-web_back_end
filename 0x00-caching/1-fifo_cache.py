@@ -6,7 +6,8 @@ from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    ''' Implements the put and get functions in accordance with FIFO caching. '''
+    ''' Implements the put and get functions in accordance with
+    FIFO caching. '''
 
     def put(self, key, item):
         ''' Adds an item to the cache and removes the oldest item in the
