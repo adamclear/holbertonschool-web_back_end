@@ -2,6 +2,8 @@
 ''' This module contains the class RedactingFormatter and other functions
 related to its use. '''
 import logging
+import mysql.connector
+import os
 import re
 from typing import List
 
@@ -51,3 +53,13 @@ def get_logger() -> logging.Logger:
     streamHandler.setFormatter(RedactingFormatter(PII_FIELDS))
     user_data.addHandler(streamHandler)
     return user_data
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    ''' Establishes connection to the database. '''
+    return mysql.connector.connect(
+        host=os.environ.get('PERSONAL_DATA_DB_HOST', 'localhost'),
+        database=os.environ.get('PERSONAL_DATA_DB_NAME', 'root'),
+        user=os.environ.get('PERSONAL_DATA_DB_USERNAME'),
+        password=os.environ.get('PERSONAL_DATA_DB_PASSWORD', '')
+    )
