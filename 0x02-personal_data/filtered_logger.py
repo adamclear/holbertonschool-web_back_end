@@ -63,3 +63,18 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         user=os.environ.get('PERSONAL_DATA_DB_USERNAME'),
         password=os.environ.get('PERSONAL_DATA_DB_PASSWORD', '')
     )
+
+
+def main():
+    ''' Retrieves all rows in the users table and displays them. '''
+    db = get_db()
+    log = get_logger()
+    cursor = db.cursor(dictionary=True)
+    cursor.execute('SELECT * FROM users;')
+    for row in cursor:
+        log.warning('; '.join(f'{key}={value}' for key, value in row.items()))
+    db.close()
+
+
+if __name__ == '__main__':
+    main()
