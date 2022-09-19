@@ -21,7 +21,6 @@ if AUTH_TYPE == 'auth':
     auth = Auth()
 
 
-
 @app.errorhandler(401)
 def unauthorized(error) -> str:
     ''' Error handler for 401 '''
