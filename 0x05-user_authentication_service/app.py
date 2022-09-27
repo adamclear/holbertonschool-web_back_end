@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 ''' Flask App '''
 from auth import Auth
-from flask import abort, Flask, jsonify, request
+from flask import abort, Flask, jsonify, redirect, request
 
 
 app = Flask(__name__)
@@ -44,6 +44,7 @@ def logout():
     ''' Logs the user out and destroys session '''
     try:
         AUTH.destroy_session(request.cookies['session_id'])
+        return redirect('/')
     except Exception:
         abort(403)
 
