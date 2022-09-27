@@ -39,5 +39,14 @@ def login():
     return response
 
 
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
+def logout():
+    ''' Logs the user out and destroys session '''
+    try:
+        AUTH.destroy_session(request.cookies['session_id'])
+    except Exception:
+        abort(403)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
