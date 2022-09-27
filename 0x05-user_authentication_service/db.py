@@ -2,8 +2,10 @@
 """DB module
 """
 from sqlalchemy import create_engine
+from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.orm.session import Session
 
 from user import Base, User
@@ -36,3 +38,12 @@ class DB:
         self._session.add(newUser)
         self._session.commit()
         return newUser
+
+    def find_user_by(self, **kwargs) -> User:
+        ''' Finds the first User in DB as filtered by kwargs '''
+        if not kwargs:
+            raise InvalidRequestError
+        user = self._session.query(User).filter_by(**kwargs).first()
+        if user is None:
+            raise NoResultFound
+        return user
