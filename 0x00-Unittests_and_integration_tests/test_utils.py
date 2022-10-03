@@ -5,7 +5,7 @@
 from parameterized import parameterized
 import typing
 from unittest import TestCase, mock
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 
 
 class TestAccessNestedMap(TestCase):
@@ -47,3 +47,27 @@ class TestGetJson(TestCase):
         with mock.patch("requests.get") as getit:
             getit.return_value.json.return_value = payload
             self.assertEqual(get_json(url), payload)
+
+
+class TestMemoize(TestCase):
+    ''' Tests for memoize '''
+    def test_memoize(self):
+        ''' memoize test '''
+        class TestClass:
+            ''' Test class for memoize tests '''
+            def a_method(self):
+                ''' Test method for class '''
+                return 42
+
+            @memoize
+            def a_property(self):
+                ''' Test property for class '''
+                return self.a_method()
+
+        with mock.patch.object(TestClass,
+                               'a_method',
+                               return_value=42) as mockingbird:
+            mockObj = TestClass()
+            self.assertEqual(mockObj.a_property, 42)
+            self.assertEqual(mockObj.a_property, 42)
+            mockingbird.assert_called_once()
