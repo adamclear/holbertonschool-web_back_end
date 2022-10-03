@@ -4,7 +4,7 @@
 
 from parameterized import parameterized
 import typing
-from unittest import TestCase, mock
+from unittest import mock, TestCase
 from utils import access_nested_map, get_json, memoize
 
 
