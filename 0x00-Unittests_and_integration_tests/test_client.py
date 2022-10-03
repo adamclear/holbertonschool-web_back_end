@@ -2,8 +2,9 @@
 ''' Unittests for client '''
 
 
+from fixtures import *
 from client import GithubOrgClient
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 import unittest
 from unittest import mock, TestCase
 from unittest.mock import MagicMock, patch, PropertyMock
@@ -50,3 +51,21 @@ class TestGithubOrgClient(TestCase):
         ''' has_license tests '''
         goc = GithubOrgClient("org_name")
         self.assertEqual(goc.has_license(repo, license_key), expected)
+
+
+@parameterized_class(
+    ("org_payload", "repos_payload", "expected_repos", "apache2_repos"),
+    TEST_PAYLOAD
+)
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    ''' Tests for Integration GOC '''
+    @classmethod
+    def setUpClass(cls) -> None:
+        ''' Setup class for tests '''
+        from urllib.error import HTTPError
+        cls.get_patcher = patch("requests.get", side_effect=HTTPError)
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        ''' Teardown class for tests '''
+        cls.get_patcher.stop()
