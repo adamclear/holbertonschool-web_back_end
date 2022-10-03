@@ -33,7 +33,7 @@ class TestAccessNestedMap(TestCase):
         ''' access_nested_map exception test '''
         self.assertRaises(KeyError, access_nested_map, nested_map, path)
 
-    
+
 class TestGetJson(TestCase):
     ''' Tests for get_json '''
     @parameterized.expand([
