@@ -5,15 +5,13 @@ DELIMITER //
 CREATE PROCEDURE AddBonus(
 	IN user_id INT,
 	IN project_name VARCHAR(255),
-	IN score INT
-)
-
+	IN score INT)
 BEGIN
 	IF NOT EXISTS (SELECT * FROM projects WHERE name = project_name) THEN
 		INSERT INTO projects (name) VALUES (project_name);
 		SET @project_id = LAST_INSERT_ID();
 	ELSE
-		SET @project_id = (SELECT id FROM projects WHERE name = project_name)
+		SET @project_id = (SELECT id FROM projects WHERE name = project_name);
 	END IF;
 	INSERT INTO corrections (user_id, project_id, score)
 	VALUES (user_id, @project_id, score);
