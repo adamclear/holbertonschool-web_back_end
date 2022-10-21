@@ -1,2 +1,2 @@
 // shows all databases in a mongodb NoSQL env
-show dbs
+show databases
