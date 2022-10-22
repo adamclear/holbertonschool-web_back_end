@@ -1,7 +1,7 @@
 // Displays welcome message and asks for name, then displays users
 // input name
 
-console.log("Welcome to Holberton School, what is your name?");
+console.log('Welcome to Holberton School, what is your name?');
 process.stdin
 	.on('readable', () => {
 		const name = process.stdin.read();
@@ -10,5 +10,5 @@ process.stdin
 		}
 	})
 	.on('end', () => {
-		process.stdout.writableFinished("This important software is now closing\n");
+		process.stdout.write('This important software is now closing\n');
 	});
