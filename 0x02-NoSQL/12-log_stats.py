@@ -11,10 +11,10 @@ def log_stats():
     print("Methods:")
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     for method in methods:
-        print(f"\tmethod {method}: \
-            {mongoLog.count_documents({'method': method})}")
-    print(f"{mongoLog.count_documents({'method': 'GET', 'path': '/status'})}\
-        status check")
+        print(f"\tmethod {method}: "\
+            + f"{mongoLog.count_documents({'method': method})}")
+    print(f"{mongoLog.count_documents({'method': 'GET', 'path': '/status'})}"\
+        f" status check")
 
 
 if __name__ == "__main__":
