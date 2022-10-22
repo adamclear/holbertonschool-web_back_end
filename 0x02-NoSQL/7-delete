@@ -1,5 +1,5 @@
 // deletes all documents with attr:value match in "school"
-db.school.remove(
+db.school.deleteMany(
 	{
 		name: "Holberton school"
 	}
