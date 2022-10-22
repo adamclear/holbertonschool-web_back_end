@@ -13,12 +13,8 @@ const countStudents = (path) => {
   console.log(`Number of students: ${lines.length}`);
   const fields = [...new Set(lines.map((line) => line.split(',')[3]))];
   fields.forEach((field) => {
-    const studentsInField = lines
-      .filter((line) => line.endsWith(field))
-      .map((line) => {
-        const firstName = line.split(',');
-        return firstName[0];
-      });
+    const studentsInField = lines.filter((line) => line.endsWith(field))
+      .map((line) => line.split(',')[0]);
     console.log(
       `Number of students in ${field}: ${
         studentsInField.length
