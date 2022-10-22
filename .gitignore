@@ -7,3 +7,4 @@
 *utils.js
 __pycache__
 *.db
+*database.csv
