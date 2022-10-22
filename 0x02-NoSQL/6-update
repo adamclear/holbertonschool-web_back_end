@@ -1,6 +1,6 @@
 // updates document(s) in "school" that has attr:value pair
 db.school.update(
 	{name: "Holberton school"},
-	{$set: {address: "972 Mission Street"}},
+	{ $set: {address: "972 Mission street"} },
 	{multi: true}
 )
