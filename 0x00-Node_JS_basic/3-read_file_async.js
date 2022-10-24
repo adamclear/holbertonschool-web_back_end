@@ -1,6 +1,5 @@
 // Logs # of students in each field of database file
 
-const { text } = require('express');
 const fs = require('fs');
 
 const countStudents = async (path) => {
@@ -14,8 +13,6 @@ const countStudents = async (path) => {
   console.log(`Number of students: ${lines.length}`);
   const fields = [...new Set(lines.map((line) => line.split(',')[3]))];
   let textBlock = `Number of students: ${lines.length}\n`;
-  const dict = {};
-  let x = 0;
   fields.forEach((field) => {
     const studentsInField = lines.filter((line) => line.endsWith(field))
       .map((line) => line.split(',')[0]);
