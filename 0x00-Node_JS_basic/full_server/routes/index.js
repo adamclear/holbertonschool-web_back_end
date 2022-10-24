@@ -1,7 +1,7 @@
 // Express router
 const express = require('express');
-const AppController = require('../contollers/AppController');
-const StudentsController = require('../contollers/StudentsController');
+const AppController = require('../controllers/AppController');
+const StudentsController = require('../controllers/StudentsController');
 
 const router = express.Router();
 router.get('/students/:major', StudentsController.getAllStudentsByMajor);
