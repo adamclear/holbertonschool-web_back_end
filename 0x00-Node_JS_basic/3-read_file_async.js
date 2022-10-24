@@ -11,7 +11,7 @@ const countStudents = async (path) => {
     throw Error('Cannot load the database');
   }
   const lines = students.split('\n').slice(1).filter((line) => line !== '');
-  console.log(`Number of students: ${lines.length}`);
+  // console.log(`Number of students: ${lines.length}`);
   const fields = [...new Set(lines.map((line) => line.split(',')[3]))];
   let textBlock = `Number of students: ${lines.length}\n`;
   const dict = {};
@@ -23,18 +23,14 @@ const countStudents = async (path) => {
     textBlock += `Number of students in ${field}: ${
       numberOfStudents
     }. List: ${studentsInField.join(', ')}\n`;
-    console.log(
-      `Number of students in ${field}: ${
-        numberOfStudents
-      }. List: ${studentsInField.join(', ')}`,
-    );
-    dict[field[x]] = {
-      numberOfStudents,
-      studentsInField,
-    };
-    x += 1;
+    // console.log(
+    //   `Number of students in ${field}: ${
+    //     numberOfStudents
+    //   }. List: ${studentsInField.join(', ')}`,
+    // );
   });
   const editedBlock = textBlock.slice(0, -1);
+  console.log(editedBlock);
   return editedBlock;
 };
 

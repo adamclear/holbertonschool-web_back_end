@@ -10,8 +10,9 @@ const app = http.createServer((request, response) => {
     countStudents(process.argv[2]).then((data) => {
       response.end(data);
     })
+    .catch((error) => response.end(data + error.message));
   }
 })
-.listen(1245);
+  .listen(1245);
 
 module.exports = app;
