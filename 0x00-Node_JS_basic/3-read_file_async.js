@@ -17,17 +17,17 @@ const countStudents = async (path) => {
   fields.forEach((field) => {
     const studentsInField = lines.filter((line) => line.endsWith(field))
       .map((line) => line.split(',')[0]);
+    const numberOfStudents = studentsInField.length;
     console.log(
       `Number of students in ${field}: ${
-        studentsInField.length
+        numberOfStudents
       }. List: ${studentsInField.join(', ')}`,
     );
-    numStudents = studentsInField.length
     dict[field[x]] = {
-      numStudents,
+      numberOfStudents,
       studentsInField,
     };
-    x++;
+    x += 1;
   });
   return dict;
 };
