@@ -4,7 +4,6 @@
 *babel.config.js
 *package.json
 *package-lock.json
-*utils.js
 __pycache__
 *.db
 *database.csv
