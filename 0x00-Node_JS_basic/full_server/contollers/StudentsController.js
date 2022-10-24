@@ -5,7 +5,9 @@ class StudentsController {
   static getAllStudents(request, response) {
     readDatabase(process.argv[2]).then((data) => {
       response.write('This is the list of our students\n');
-      response.end(data);
+      const textLines = data.split('\n').slice(1);
+      const textBlock = textLines.join('\n');
+      response.end(textBlock);
     })
       .catch((error) => response.status(500).end(error.message));
   }
