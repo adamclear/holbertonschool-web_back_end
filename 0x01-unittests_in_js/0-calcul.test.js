@@ -1,6 +1,6 @@
 // Tests for 0-calcul.js
 const calculateNumber = require('./0-calcul.js');
-const assert = require('assert').strict;
+const assert = require('assert');
 
 describe('calculateNumber', () => {
 	it('Testing positive ints and floats', () => {
