@@ -3,6 +3,7 @@
 *.eslintrc.js
 *babel.config.js
 *package.json
+!/0x01-unittests_in_js/package.json
 *package-lock.json
 __pycache__
 *.db
