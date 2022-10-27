@@ -1,6 +1,6 @@
 // Tests for 3-payment.js
 const expect = require('chai').expect;
-const sendPaymentRequestToApi = require('./3-payment.js');
+const sendPaymentRequestToApi = require('./4-payment.js');
 const sinon = require('sinon');
 const Utils = require('./utils.js');
 
