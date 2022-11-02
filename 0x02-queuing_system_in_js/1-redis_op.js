@@ -1,5 +1,4 @@
 // Connects to redis server and logs message to console
-const { client } = require('kue/lib/redis');
 const redis = require('redis');
 const redisCLI = redis.createClient();
 
