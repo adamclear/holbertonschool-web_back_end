@@ -16,9 +16,6 @@ const setNewSchool = (schoolName, value) => {
 
 const displaySchoolValue = (schoolName) => {
 	redisCLI.get(schoolName, (err, value) => {
-		if (err) {
-			console.log(err);
-		}
 		console.log(value);
 	});
 };
