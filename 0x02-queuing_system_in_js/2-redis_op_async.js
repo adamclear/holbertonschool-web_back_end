@@ -1,6 +1,7 @@
 // Connects to redis server and logs message to console
 const redis = require('redis');
 const redisCLI = redis.createClient();
+const { promisify } = require('utils');
 
 redisCLI
 	.on('connect', () => {
@@ -14,13 +15,8 @@ const setNewSchool = (schoolName, value) => {
 	redisCLI.set(schoolName, value, redis.print);
 };
 
-const displaySchoolValue = (schoolName) => {
-	redisCLI.get(schoolName, (err, value) => {
-		if (err) {
-			console.log(err);
-		}
-		console.log(value);
-	});
+const displaySchoolValue = async (schoolName) => {
+	console.log(await promisify(redisCLI.get).bind(redisCLI)(schoolName));
 };
 
 displaySchoolValue('Holberton');
